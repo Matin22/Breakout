@@ -1,11 +1,11 @@
-x# Makefile
+# Makefile
 
 # Compiler and flags
 CXX := g++.exe
 CXXFLAGS := -g -std=c++17 -Iinclude
 
 # Source files
-SRC := src/main.cpp
+SRC := src/main.cpp src/glad.c src/game.cpp src/resource_manager.cpp src/shader.cpp src/texture.cpp
 
 # Output
 BIN_DIR := bin
