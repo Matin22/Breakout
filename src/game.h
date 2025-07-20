@@ -28,4 +28,4 @@ public:
     void Render();
 };
 
-#endif GAME_H
+#endif
