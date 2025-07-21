@@ -5,7 +5,7 @@ CXX := g++.exe
 CXXFLAGS := -g -std=c++17 -Iinclude
 
 # Source files
-SRC := src/main.cpp src/glad.c src/game.cpp src/resource_manager.cpp src/shader.cpp src/texture.cpp
+SRC := src/main.cpp src/glad.c src/game.cpp src/resource_manager.cpp src/shader.cpp src/texture.cpp src/sprite_renderer.cpp
 
 # Output
 BIN_DIR := bin
