@@ -27,7 +27,7 @@ Texture2D ResourceManager::LoadTexture(const char *file, bool alpha, std::string
     return Textures[name];
 }
 
-Texture2D ResourceManager::GenTexture(std::string name)
+Texture2D ResourceManager::GetTexture(std::string name)
 {
     return Textures[name];
 }
@@ -67,7 +67,7 @@ Shader ResourceManager::loadShaderFromFile(const char *vShaderFile, const char *
         if (gShaderFile != nullptr){
             std::ifstream geometryShaderFile(gShaderFile);
             std::stringstream gShaderStream;
-            gShaderStream << gShaderStream.rdbuf();
+            gShaderStream << geometryShaderFile.rdbuf();
             geometryShaderFile.close();
             geometryCode = fShaderStream.str();
         }
