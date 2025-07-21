@@ -3,6 +3,8 @@
 
 #include <GLAD/glad.h>
 #include <GLFW/glfw3.h>
+#include "sprite_renderer.h"
+
 
 enum GameState
 {
@@ -26,6 +28,8 @@ public:
     void ProcessInput(float dt);
     void Update(float dt);
     void Render();
+private:
+    SpriteRenderer *Renderer;
 };
 
 #endif
