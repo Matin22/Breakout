@@ -92,8 +92,18 @@ Texture2D ResourceManager::loadTextureFromFile(const char *file, bool alpha)
     }
 
     int width, height, nrChannels;
+    stbi_set_flip_vertically_on_load(true);
     unsigned char *data = stbi_load(file, &width, &height, &nrChannels, 0);
-    texture.Generate(width, height, data);
+    
+    if (data)
+    {
+        texture.Generate(width, height, data);
+    }
+    else
+    {
+        std::cout << "ERROR::TEXTURE: Failed to load texture file: " << file << std::endl;
+    }
+    
     stbi_image_free(data);
     return texture;
 }
