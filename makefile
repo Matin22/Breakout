@@ -2,10 +2,10 @@
 
 # Compiler and flags
 CXX := g++.exe
-CXXFLAGS := -g -std=c++17 -Iinclude
+CXXFLAGS := -g -std=c++17 -Wall -Wextra -Iinclude 
 
 # Source files
-SRC := src/main.cpp src/glad.c src/game.cpp src/resource_manager.cpp src/shader.cpp src/texture.cpp src/sprite_renderer.cpp
+SRC := src/main.cpp src/glad.c src/game.cpp src/resource_manager.cpp src/shader.cpp src/texture.cpp src/sprite_renderer.cpp src/game_object.cpp src/game_level.cpp
 
 # Output
 BIN_DIR := bin
