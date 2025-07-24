@@ -17,6 +17,8 @@ void SpriteRenderer::DrawSprite(Texture2D &texture, glm::vec2 position, glm::vec
     
     glm::mat4 model = glm::mat4(1.0f);
     
+    model = glm::translate(model, glm::vec3(position, 0.0f));
+
     // move origin to center to rotate
     model = glm::translate(model, glm::vec3(0.5f * size.x, 0.5f * size.y, 0.0f));
     model = glm::rotate(model, glm::radians(rotate), glm::vec3(0.0f, 0.0f, 1.0f));
