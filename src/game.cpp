@@ -2,7 +2,8 @@
 #include "resource_manager.h"
 #include "sprite_renderer.h"
 
-SpriteRenderer *Renderer;
+SpriteRenderer  *Renderer;
+GameObject      *Player;
 
 Game::Game(unsigned int width, unsigned int height)
     : State(GAME_ACTIVE), Keys(), Width(width), Height(height)
@@ -12,6 +13,7 @@ Game::Game(unsigned int width, unsigned int height)
 Game::~Game()
 {
     delete Renderer;
+    delete Player;
 }
 
 void Game::Init()
@@ -33,16 +35,48 @@ void Game::Init()
     ResourceManager::LoadTexture("res/textures/diamond.png", false, "diamond");
     ResourceManager::LoadTexture("res/textures/iron.png", false, "iron");
     ResourceManager::LoadTexture("res/textures/emerald.png", false, "emerald");
+    ResourceManager::LoadTexture("res/textures/paddle.png", true, "paddle");
 
     GameLevel one;
     one.Load("res/levels/one.lvl", this->Width, this->Height / 2);
     this->Levels.push_back(one);
+    
+    GameLevel two;
+    two.Load("res/levels/two.lvl", this->Width, this->Height / 2);
+    this->Levels.push_back(two);
+     
+    GameLevel three;
+    two.Load("res/levels/three.lvl", this->Width, this->Height / 2);
+    this->Levels.push_back(three);
+    
+    GameLevel four;
+    two.Load("res/levels/four.lvl", this->Width, this->Height / 2);
+    this->Levels.push_back(four);
 
     this->Level = 0;
+
+    glm::vec2 playerPos = glm::vec2(this->Width / 2.0f - PLAYER_SIZE.x / 2.0f, this->Height - PLAYER_SIZE.y);
+    Player = new GameObject(playerPos, PLAYER_SIZE, ResourceManager::GetTexture("paddle"));
 }
 
 void Game::ProcessInput(float dt)
 {
+    if(this->State == GAME_ACTIVE)
+    {
+        float velocity = PLAYER_VELOCITY * dt;
+
+        if (this->Keys[GLFW_KEY_LEFT])
+        {
+            if(Player->Position.x >= 0.0f)
+                Player->Position.x -= velocity;
+        }
+        
+        if (this->Keys[GLFW_KEY_RIGHT])
+        {
+            if(Player->Position.x <= this->Width - Player->Size.x)
+                Player->Position.x += velocity;
+        }
+    }
 }
 
 void Game::Update(float dt)
@@ -58,5 +92,6 @@ void Game::Render()
                              glm::vec2(this->Width, this->Height), 0.0f);
 
         this->Levels[this->Level].Draw(*Renderer);
+        Player->Draw(*Renderer);
     }
 }

@@ -7,6 +7,9 @@
 
 #include "game_level.h"
 
+const glm::vec2 PLAYER_SIZE(125.0f, 20.0f);
+const float PLAYER_VELOCITY(500.0f);
+
 enum GameState
 {
     GAME_ACTIVE,
