@@ -68,12 +68,12 @@ void GameLevel::init(std::vector<std::vector<unsigned int>> tileData, unsigned i
 
             else if (tileData[y][x] > 1) // non solid
             {
-                blockTexture = ResourceManager::GetTexture("stone");
                 glm::vec3 color = glm::vec3(1.0f);
-                if      (tileData[y][x] == 2) blockTexture = ResourceManager::GetTexture("cobble");
+                if      (tileData[y][x] == 2) blockTexture = ResourceManager::GetTexture("stone");
                 else if (tileData[y][x] == 3) blockTexture = ResourceManager::GetTexture("iron");
                 else if (tileData[y][x] == 4) blockTexture = ResourceManager::GetTexture("emerald");
                 else if (tileData[y][x] == 5) blockTexture = ResourceManager::GetTexture("diamond");
+                else blockTexture = ResourceManager::GetTexture("cobble");
 
                 glm::vec2 pos(unit_width * x, unit_height * y);
                 glm::vec2 size(unit_width, unit_height);
