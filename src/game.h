@@ -10,6 +10,9 @@
 const glm::vec2 PLAYER_SIZE(125.0f, 20.0f);
 const float PLAYER_VELOCITY(500.0f);
 
+const glm::vec2 INITIAL_BALL_VELOCITY(100.0f, -350.0f);
+const float BALL_RADIUS = 15.0f;
+
 enum GameState
 {
     GAME_ACTIVE,
